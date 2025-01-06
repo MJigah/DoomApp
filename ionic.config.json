@@ -1,0 +1,7 @@
+{
+  "name": "hostel-mgt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
