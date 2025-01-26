@@ -1,2 +1,26 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+* {
+  font-family: 'Roboto';
+}
+
+ion-button.default-bottom-btn{
+  --background: #003b94d9;
+  --background-activated: #003b94d9;
+  --background-focused: #003b94d9;
+  --border-radius: 0;
+}
+
+ion-input {
+  --border-color: #808080;
+  --border-width: 1px;
+  --border-style: solid;
+  border: 1px solid #80808080;
+  --border-radius: 3px;
+  border-radius: 3px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+}
