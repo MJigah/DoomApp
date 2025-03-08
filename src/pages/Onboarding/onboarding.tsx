@@ -1,11 +1,12 @@
-import { IonPage, IonText, useIonRouter } from "@ionic/react";
+import { IonPage, IonText } from "@ionic/react";
 import React, { useEffect } from "react";
+import usePush from "../../utils/usePush";
 
 const Onboarding = () => {
-  const router = useIonRouter();
+  const { push } = usePush();
   useEffect(() => {
     setTimeout(() => {
-      router.push("/auth/splash");
+      push("/auth/splash");
     }, 3000);
   }, []);
 

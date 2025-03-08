@@ -3,8 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CloseIcon from "../../assets/svg/Close.svg?react";
 import "./sideMenu.css";
+import usePush from "../../utils/usePush";
+import { AuthRoutes } from "../../layout/AuthLayout/routes";
 
 const SideMenu = () => {
+  const { push } = usePush();
+  const handleLogout = () => {
+    push(AuthRoutes.login);
+  };
   return (
     <IonMenu contentId="main-content" className="admin-menu">
       <IonHeader className="bg-btnPrimary flex items-start justify-end px-4 pt-6">
@@ -26,7 +32,10 @@ const SideMenu = () => {
           <Link to="#" className="text-2xl text-white font-medium p-2">
             Billings
           </Link>
-          <button className="text-2xl text-white font-medium p-2">
+          <button
+            className="text-2xl text-white font-medium p-2"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>

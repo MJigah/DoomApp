@@ -7,6 +7,7 @@ import SplashScreen from "../../pages/SplashScreen/splashScreen";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
 import Register from "../../pages/Register/register";
 import CategoryRegistration from "../../pages/CategoryRegistration/categoryRegistration";
+import Login from "../../pages/Login/login";
 
 const AuthLayout = () => {
   return (
@@ -20,6 +21,9 @@ const AuthLayout = () => {
         </Route>
         <Route path={AuthRoutes.register}>
           <Register />
+        </Route>
+        <Route path={AuthRoutes.login}>
+          <Login />
         </Route>
         <Route path={AuthRoutes.category}>
           <CategoryRegistration />

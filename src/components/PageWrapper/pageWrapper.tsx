@@ -22,7 +22,7 @@ const PageWrapper: FC<PageWrapperProps> = ({
   ...props
 }) => {
   return (
-    <IonPage className={classNames("px-3", className)} {...props}>
+    <IonPage className={classNames("px-3 bg-white", className)} {...props}>
       {headerComponent && (
         <IonHeader className={headerClassName}>{headerComponent}</IonHeader>
       )}

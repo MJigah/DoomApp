@@ -3,10 +3,19 @@ import { IonFooter, IonButton, IonText } from "@ionic/react";
 import SplashImage from "../../assets/image/splash.png";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
 import "./splashScreen.css";
+import usePush from "../../utils/usePush";
+import { AuthRoutes } from "../../layout/AuthLayout/routes";
 
 const SplashScreen = () => {
+  const { push } = usePush();
+  const navigateToRegister = () => {
+    push(AuthRoutes.register);
+  };
   const footerComponent = (
-    <IonButton className="flex-1 rounded-sm default-bottom-btn font-semibold text-lg">
+    <IonButton
+      className="flex-1 rounded-sm default-bottom-btn font-semibold text-lg"
+      onClick={navigateToRegister}
+    >
       Get Started
     </IonButton>
   );

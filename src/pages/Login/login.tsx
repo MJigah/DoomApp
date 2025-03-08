@@ -2,18 +2,30 @@ import React from "react";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
 import { IonButton, IonInput, IonText } from "@ionic/react";
 import { Link } from "react-router-dom";
-import "./register.css";
+import LoginIcon from "../../assets/svg/login.svg?react";
+import "./login.css";
 import { AuthRoutes } from "../../layout/AuthLayout/routes";
+import usePush from "../../utils/usePush";
 
-const Register = () => {
+const Login = () => {
+  const { push } = usePush();
+
+  const handleNavigateToCategoryPage = () => {
+    push(AuthRoutes.category);
+  };
   const footerComponent = (
     <div className="flex-1 flex flex-col gap-y-3 px-3 py-3">
-      <IonButton className="default-bottom-btn">Register</IonButton>
+      <IonButton
+        className="default-bottom-btn"
+        onClick={handleNavigateToCategoryPage}
+      >
+        Login
+      </IonButton>
       <IonText className="text-center text-sm">
         Already have an account?
-        <Link className="text-btnPrimary" to={AuthRoutes.login}>
+        <Link className="text-btnPrimary" to={AuthRoutes.register}>
           {" "}
-          Sign in
+          Sign up
         </Link>
       </IonText>
     </div>
@@ -26,22 +38,20 @@ const Register = () => {
             DormApp
           </IonText>
           <IonText className="text-lg font-semibold mt-1">
-            Welcome Onboard!
+            Welcome back!
           </IonText>
           <IonText className="text-lightGrey text-sm">
-            Let's get you started
+            Let's help you get started
           </IonText>
+          <LoginIcon className="py-8" />
         </div>
         <form className="flex flex-col gap-y-3">
           <IonInput className="text-sm" placeholder="Enter your full name" />
-          <IonInput className="text-sm" placeholder="Enter your email" />
-          <IonInput className="text-sm" placeholder="Admin/Staff/Student" />
           <IonInput className="text-sm" placeholder="Enter your password" />
-          <IonInput className="text-sm" placeholder="Confirm Password" />
         </form>
       </div>
     </PageWrapper>
   );
 };
 
-export default Register;
+export default Login;

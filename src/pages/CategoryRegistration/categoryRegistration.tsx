@@ -2,8 +2,15 @@ import React from "react";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
 import { IonInput, IonText } from "@ionic/react";
 import "./categoryRegistration.css";
+import usePush from "../../utils/usePush";
+import { DashboardRoutes } from "../../layout/DashboardLayout/routes";
 
 const CategoryRegistration = () => {
+  const { push } = usePush();
+
+  const navigateToDashboard = () => {
+    push(DashboardRoutes.admin);
+  };
   return (
     <PageWrapper className="category-register-page">
       <div className="flex flex-col gap-y-[80px] py-[120px]">
@@ -15,11 +22,26 @@ const CategoryRegistration = () => {
             Which user category do you belong to?
           </IonText>
         </div>
-        <form className="flex flex-col gap-y-3">
-          <IonInput className="text-sm" placeholder="Admin" />
-          <IonInput className="text-sm" placeholder="Staff" />
-          <IonInput className="text-sm" placeholder="Student" />
-        </form>
+        <div className="flex flex-col gap-y-3">
+          <button
+            className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
+            onClick={navigateToDashboard}
+          >
+            Admin
+          </button>
+          <button
+            className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
+            onClick={navigateToDashboard}
+          >
+            Staff
+          </button>
+          <button
+            className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
+            onClick={navigateToDashboard}
+          >
+            Student
+          </button>
+        </div>
       </div>
     </PageWrapper>
   );
