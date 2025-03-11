@@ -4,20 +4,9 @@ const store = new Storage();
 const storage = await store.create();
 
 export interface StorageUserDataProps {
-  first_name: string;
-  last_name: string;
-  phone_no: string;
+  fullName: string;
   email: string;
-  username: string;
-  account_type: string;
-  avatarUrl: string | null;
-  bvn: string | null;
-  isEmailVerified: boolean;
-  allowEmailNotification?: boolean;
-  allowPushNotification?: boolean;
-  hasPin?: boolean;
-  wallet?: any;
-  identities?: any;
+  role: string;
 }
 
 export const setUserLogin = async () => {
@@ -57,9 +46,8 @@ export async function getLoginTime() {
 }
 
 export const setToken = (token: string) => {
-  // storage.remove("userToken");
+  storage.remove("userToken");
   storage.set("userToken", token);
-  storage.set("loginTime", new Date().getTime());
 };
 
 export const setUserSession = async (token: string, user: any) => {
@@ -68,7 +56,7 @@ export const setUserSession = async (token: string, user: any) => {
 };
 
 export const setUser = (user: StorageUserDataProps) => {
-  // storage.remove("zippyUser");
+  storage.remove("zippyUser");
   storage.set("zippyUser", JSON.stringify(user));
 };
 
@@ -150,43 +138,17 @@ export const containsCapitalOrNumber = (str: string) => {
   return regex.test(str);
 };
 
-export const enableCustomerBiometricStatus = async () => {
-  await storage.set("isCustomerBiometricActive", String(true));
+export const setUserRole = (role: string) => {
+  storage.remove("userRole");
+  storage.set("userRole", role);
 };
 
-export const disableCustomerBiometricStatus = async () => {
-  await storage.set("isCustomerBiometricActive", String(false));
+export const removeUserRole = async () => {
+  await storage.remove("userRole");
 };
 
-export const getCustomerBiometricStatus = async () => {
-  const status = await storage.get("isCustomerBiometricActive");
-
-  return status === String(true);
-};
-
-export const enableMerchantBiometricStatus = async () => {
-  await storage.set("isMerchantBiometricActive", String(true));
-};
-
-export const disableMerchantBiometricStatus = async () => {
-  await storage.set("isMerchantBiometricActive", String(false));
-};
-
-export const getMerchantBiometricStatus = async () => {
-  const status = await storage.get("isMerchantBiometricActive");
-
-  return status === String(true);
-};
-
-export const setSelectedUser = async (data: any) => {
-  console.log(data);
-  storage.remove("zpSelectedUser");
-  await storage.set("zpSelectedUser", JSON.stringify(data));
-};
-
-export const getSelectedUser = async () => {
-  const zpSelectedUser = JSON.parse(await storage.get("zpSelectedUser"));
-
-  if (zpSelectedUser) return zpSelectedUser;
+export async function getUserRole() {
+  const userRole = await storage.get("userRole");
+  if (userRole) return userRole;
   else return null;
-};
+}

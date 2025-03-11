@@ -4,5 +4,5 @@ export enum AuthRoutes {
   splash = `${AuthRoutes.root}/splash`,
   register = `${AuthRoutes.root}/register`,
   login = `${AuthRoutes.root}/login`,
-  category = `${AuthRoutes.register}/category`,
+  category = `${AuthRoutes.root}/category`,
 }

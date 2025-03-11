@@ -1,25 +1,21 @@
 import React from "react";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
-import { IonButton, IonInput, IonText } from "@ionic/react";
+import { IonButton, IonInput, IonSpinner, IonText } from "@ionic/react";
 import { Link } from "react-router-dom";
 import LoginIcon from "../../assets/svg/login.svg?react";
 import "./login.css";
 import { AuthRoutes } from "../../layout/AuthLayout/routes";
-import usePush from "../../utils/usePush";
+import useLogin from "./hooks/useLogin";
+import Loader from "../../components/Loader/loader";
 
 const Login = () => {
-  const { push } = usePush();
+  const { handleLogin, fullName, setFullName, password, setPassword, loading } =
+    useLogin();
 
-  const handleNavigateToCategoryPage = () => {
-    push(AuthRoutes.category);
-  };
   const footerComponent = (
     <div className="flex-1 flex flex-col gap-y-3 px-3 py-3">
-      <IonButton
-        className="default-bottom-btn"
-        onClick={handleNavigateToCategoryPage}
-      >
-        Login
+      <IonButton className="default-bottom-btn" onClick={handleLogin}>
+        <Loader loading={loading} displayText="Login" />
       </IonButton>
       <IonText className="text-center text-sm">
         Already have an account?
@@ -30,6 +26,7 @@ const Login = () => {
       </IonText>
     </div>
   );
+
   return (
     <PageWrapper footerComponent={footerComponent} className="register-page">
       <div className="flex flex-col gap-y-[80px] pt-10">
@@ -46,8 +43,18 @@ const Login = () => {
           <LoginIcon className="py-8" />
         </div>
         <form className="flex flex-col gap-y-3">
-          <IonInput className="text-sm" placeholder="Enter your full name" />
-          <IonInput className="text-sm" placeholder="Enter your password" />
+          <IonInput
+            className="text-sm"
+            placeholder="Enter your full name or email "
+            value={fullName}
+            onIonChange={(e: any) => setFullName(e.target.value)}
+          />
+          <IonInput
+            className="text-sm"
+            placeholder="Enter your password"
+            value={password}
+            onIonChange={(e: any) => setPassword(e.target.value)}
+          />
         </form>
       </div>
     </PageWrapper>

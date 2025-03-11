@@ -1,16 +1,11 @@
-import React from "react";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
-import { IonInput, IonText } from "@ionic/react";
+import { IonText } from "@ionic/react";
 import "./categoryRegistration.css";
-import usePush from "../../utils/usePush";
-import { DashboardRoutes } from "../../layout/DashboardLayout/routes";
+import useCategoryRegistration from "./hooks/useCategoryRegistration";
 
 const CategoryRegistration = () => {
-  const { push } = usePush();
+  const { handleUpdateRole } = useCategoryRegistration();
 
-  const navigateToDashboard = () => {
-    push(DashboardRoutes.admin);
-  };
   return (
     <PageWrapper className="category-register-page">
       <div className="flex flex-col gap-y-[80px] py-[120px]">
@@ -25,19 +20,19 @@ const CategoryRegistration = () => {
         <div className="flex flex-col gap-y-3">
           <button
             className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
-            onClick={navigateToDashboard}
+            onClick={() => handleUpdateRole("Admin")}
           >
             Admin
           </button>
           <button
             className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
-            onClick={navigateToDashboard}
+            onClick={() => handleUpdateRole("Staff")}
           >
             Staff
           </button>
           <button
             className="py-4 px-5 text-left text-sm border border-solid border-lightGrey text-lightGrey rounded"
-            onClick={navigateToDashboard}
+            onClick={() => handleUpdateRole("Student")}
           >
             Student
           </button>

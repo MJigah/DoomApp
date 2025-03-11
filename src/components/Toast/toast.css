@@ -1,0 +1,8 @@
+ion-toast.zp-toast {
+    --background: var( --ion-color-primary-light);
+    --border-color: var(--ion-color-grey-border-primary);
+    --border-style: solid;
+    --border-width: 1px;
+    --border-radius: 48px;
+    --height: 36px;
+}
