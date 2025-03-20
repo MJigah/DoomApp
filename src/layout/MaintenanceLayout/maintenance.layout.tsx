@@ -7,6 +7,8 @@ import MaintenanceRequest from "../../pages/MaintenanceRequest/maintenanceReques
 import AssignTechnician from "../../pages/AssignTechnician/assignTechnician";
 import TechnicianList from "../../pages/TechnicianList/technicianList";
 import TrackRequest from "../../pages/TrackRequest/trackRequest";
+import MakeRequest from "../../pages/MakeRequest/makeRequest";
+import RequestSuccess from "../../pages/RequestSuccess/requestSuccess";
 
 const MaintenanceLayout = () => {
   return (
@@ -23,6 +25,12 @@ const MaintenanceLayout = () => {
         </Route>
         <Route path={MaintenanceRoutes.trackRequest}>
           <TrackRequest />
+        </Route>
+        <Route path={MaintenanceRoutes.makeRequest}>
+          <MakeRequest />
+        </Route>
+        <Route path={MaintenanceRoutes.successRequest}>
+          <RequestSuccess />
         </Route>
       </IonRouterOutlet>
     </PageWrapper>

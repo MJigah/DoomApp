@@ -15,12 +15,12 @@ import BillingLayout from "./BillingLayout/billing.layout";
 const RootLayout = () => {
   return (
     <IonRouterOutlet>
-      <Route path={AuthRoutes.root} component={AuthLayout} />
+      <Route path={AuthRoutes.root as string} component={AuthLayout} />
       <Route path={DashboardRoutes.root} component={DashboardLayout} />
       <Route path={RoomRoutes.root} component={RoomLayout} />
       <Route path={MaintenanceRoutes.root} component={MaintenanceLayout} />
       <Route path={BillingRoutes.root} component={BillingLayout} />
-      <Redirect exact from="/" to={AuthRoutes.onboarding} />
+      <Redirect exact path="/" to={AuthRoutes.onboarding} />
     </IonRouterOutlet>
   );
 };

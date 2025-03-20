@@ -5,8 +5,10 @@ import Back from "../../assets/svg/BackArrow.svg?react";
 import SearchIcon from "../../assets/svg/Search.svg";
 import PageMenu from "../../components/PageMenu/pageMenu";
 import "./roomBlock.css";
+import useRoomBlock from "./hooks/useRoomBlock";
 
 const RoomBlock = () => {
+  const { rooms } = useRoomBlock();
   return (
     <>
       <PageMenu
@@ -25,21 +27,19 @@ const RoomBlock = () => {
             <div className="w-full flex flex-col gap-y-6 items-start justify-center">
               <IonText>Queen Amina Block</IonText>
               <div className="w-full flex flex-row">
-                {["", "", ""].map((item: any, index: number) => (
-                  <div className="flex-1">
-                    <IonText className="text-sm text-lightGrey">
-                      A/B Line
-                    </IonText>
-                    <div className="text-sm text-textGreen">
-                      {["", "", ""].map((val, index) => (
-                        <div className="flex flex-row gap-x-1">
-                          <IonText>A{index + 1}</IonText>
-                          <IonText>Occupied</IonText>
-                        </div>
-                      ))}
-                    </div>
+                <div className="flex-1">
+                  <IonText className="text-sm text-lightGrey">
+                    {`${rooms.blockLines} Line`}
+                  </IonText>
+                  <div className="text-sm text-textGreen">
+                    {rooms?.rooms?.map((val: any, index: number) => (
+                      <div className="flex flex-row gap-x-1" key={index}>
+                        <IonText>{`${val.line}${val.roomId}`}</IonText>
+                        <IonText>Occupied</IonText>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>

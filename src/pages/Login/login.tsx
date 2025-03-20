@@ -52,6 +52,7 @@ const Login = () => {
           <IonInput
             className="text-sm"
             placeholder="Enter your password"
+            type="password"
             value={password}
             onIonChange={(e: any) => setPassword(e.target.value)}
           />

@@ -1,0 +1,10 @@
+/* modal.css */
+
+ion-modal {
+  padding: 16px 8px 16px 8px;
+  --border-radius: 10px;
+}
+
+ion-modal .modal-content {
+  --background: var(--ion-color-primary-contrast);
+}

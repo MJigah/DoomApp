@@ -12,12 +12,26 @@ const enum url {
 export interface LoginRequestProps {
   fullName: string;
   password: string;
+  
+}
+
+export interface RegisterRequestProps extends LoginRequestProps {
+  email: string;
+  role: string;
 }
 
 export const login = (data: LoginRequestProps) => {
   return request(url.login, data, apiMethod.POST);
 };
 
+export const register = (data: RegisterRequestProps) => {
+  return request(url.register, data, apiMethod.POST);
+};
+
 export const updateUserRole = (data: { role: string }) => {
   return request(url.updateRole, data, apiMethod.PATCH);
+};
+
+export const getUserData = () => {
+  return request(url.root, {}, apiMethod.GET);
 };

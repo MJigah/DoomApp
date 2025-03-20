@@ -21,14 +21,16 @@ const PageMenu = ({
     <>
       <SideMenu />
       <PageWrapper id="main-content" className={pageClassName}>
-        <IonHeader className="py-5">
+        <IonHeader className="py-5 shadow-none border-none">
           <IonMenuToggle>
             {menuComponent || <MenuOpen className="text-darkBlue" />}
           </IonMenuToggle>
         </IonHeader>
         <IonContent>{children}</IonContent>
         {!!footerComponent && (
-          <IonFooter className={footerClassName}>{footerComponent}</IonFooter>
+          <IonFooter className={"shadow-none border-none" + footerClassName}>
+            {footerComponent}
+          </IonFooter>
         )}
       </PageWrapper>
     </>

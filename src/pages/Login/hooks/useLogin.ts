@@ -9,10 +9,12 @@ import {
 } from "../../../utils/helper";
 import { useToast } from "../../../utils/useToast";
 import { DashboardRoutes } from "../../../layout/DashboardLayout/routes";
+import { useUser } from "../../../utils/useUser";
 
 const useLogin = () => {
   const { push } = usePush();
   const { successToast, errorToast } = useToast();
+  const { setReduxUser } = useUser();
 
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
@@ -26,16 +28,17 @@ const useLogin = () => {
     setLoading(true);
     try {
       const { data, status, message } = await login({ fullName, password });
-      if (status !== 200){
+      if (status !== 200) {
         errorToast(message);
-      };
-      console.log(data);
-      const { token, rest, id } = data;
+      }
+      const { token, ...rest } = data;
       setToken(token);
       setUserSession(token, rest);
-      setUser(rest);
+      setReduxUser(rest);
       setUserRole(rest.role);
       successToast("Login successful");
+      setFullName("");
+      setPassword("");
       handleNavigateToCategoryPage();
     } catch (error: any) {
       console.log(error);

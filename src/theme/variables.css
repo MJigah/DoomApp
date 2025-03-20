@@ -2,10 +2,10 @@
 http://ionicframework.com/docs/theming/ */
 
 * {
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
-ion-button.default-bottom-btn{
+ion-button.default-bottom-btn {
   --background: #003b94d9;
   --background-activated: #003b94d9;
   --background-focused: #003b94d9;

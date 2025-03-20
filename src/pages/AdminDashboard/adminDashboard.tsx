@@ -14,18 +14,24 @@ import MenuOpen from "../../assets/svg/menu.svg?react";
 import "./adminDAshbord.css";
 import { Link } from "react-router-dom";
 import SideMenu from "../../components/SideMenu/sideMenu";
+import useAdminDashboard from "./hooks/useAdminDashboard";
 
 const AdminDashboard = () => {
+  const { userRole, headerClass, navLinks, containerSpacing } =
+    useAdminDashboard();
+
   return (
     <>
       <SideMenu />
       <PageWrapper className="py-14" id="main-content">
-        <div className="flex flex-col gap-y-[100px]">
+        <div className={`flex flex-col ${containerSpacing}`}>
           <div className="flex flex-col gap-y-9">
             <IonMenuToggle>
               <MenuOpen className="text-darkBlue" />
             </IonMenuToggle>
-            <IonText className="text-lg font-semibold">Hello Admin!</IonText>
+            <IonText className={`text-lg font-semibold ${headerClass}`}>
+              Hello {userRole}!
+            </IonText>
             <div className="w-full flex items-center justify-center">
               <div className="bg-darkGrey rounded-full mt-6 h-[200px] w-[200px] text-center" />
             </div>
@@ -34,15 +40,7 @@ const AdminDashboard = () => {
             <IonText className="mt-4 text-lg font-semibold">
               What do you want to do?
             </IonText>
-            <button className="w-full text-lightBlack text-xs border border-solid border-lightGrey py-5 px-4 text-left rounded-sm">
-              Room Overview
-            </button>
-            <button className="w-full text-lightBlack text-xs border border-solid border-lightGrey py-5 px-4 text-left rounded-sm">
-              Maintain Requests
-            </button>
-            <button className="w-full text-lightBlack text-xs border border-solid border-lightGrey py-5 px-4 text-left rounded-sm">
-              Billing
-            </button>
+            {navLinks}
           </div>
         </div>
       </PageWrapper>

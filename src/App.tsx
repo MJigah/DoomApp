@@ -19,12 +19,12 @@ import "@ionic/react/css/display.css";
 
 import "@ionic/react/css/palettes/high-contrast.always.css";
 
-/* Theme variables */
-import "./theme/variables.css";
-import "./theme/input.css";
 import RootLayout from "./layout";
 
-setupIonicReact();
+/* Theme variables */
+import "./theme/index.css";
+
+setupIonicReact({ mode: "ios" });
 
 const App: React.FC = () => (
   <IonApp>

@@ -1,38 +1,35 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { StateProps } from "../modules/shared/constants";
-// import { getProfileDetails } from "../service/customer.profile.service";
-// import { setUserData } from "../redux/slice/user.slice";
-// import { setUser } from "./helper";
-// import { setBusiness } from "../redux/slice/business.slice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { StateProps } from "./constant";
+import { getUserData } from "../service/user.service";
+import { setUser } from "./helper";
+import { setUserData } from "../redux/slice/user.slice";
 
-// export const useUser = () => {
-//   const { user: userData, business: merchantBusiness } = useSelector(
-//     (state: StateProps) => state
-//   );
-//   const { user } = userData;
-//   const { business } = merchantBusiness;
-//   const reduxDispatch = useDispatch();
+export const useUser = () => {
+  const { user: userData } = useSelector((state: StateProps) => state);
+  const { user } = userData;
+  const reduxDispatch = useDispatch();
 
-//   const handleGetUser = async () => {
-//     const { data } = await getProfileDetails();
-//     const { business, ...rest } = data;
-//     console.log(rest);
+  const setReduxUser = async (data: any) => {
+    await setUser(data);
+    reduxDispatch(setUserData(data));
+  };
 
-//     await setUser(rest);
-//     reduxDispatch(setUserData({ ...user, ...rest }));
-//     reduxDispatch(setBusiness(business));
-//   };
+  const handleGetUser = async () => {
+    const { data } = await getUserData();
+    await setReduxUser(data);
+  };
 
-//   useEffect(() => {
-//     if (!user.first_name) {
-//       handleGetUser();
-//     }
-//   }, []);
+  useEffect(() => {
+    console.log(user.email);
+    if (!user.email) {
+      handleGetUser();
+    }
+  }, []);
 
-//   return {
-//     user,
-//     handleGetUser,
-//     business,
-//   };
-// };
+  return {
+    user,
+    handleGetUser,
+    setReduxUser,
+  };
+};
