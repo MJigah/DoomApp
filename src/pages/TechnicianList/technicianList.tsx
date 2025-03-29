@@ -5,8 +5,10 @@ import Back from "../../assets/svg/BackArrow.svg?react";
 import MessageIcon from "../../assets/svg/message.svg?react";
 import PageMenu from "../../components/PageMenu/pageMenu";
 import "./technicianList.css";
+import useTechnicianList from "./hooks/useTechnicianList";
 
 const TechnicianList = () => {
+  const { technicians, assignTechnicianToRequest } = useTechnicianList();
   return (
     <>
       <PageMenu
@@ -20,10 +22,13 @@ const TechnicianList = () => {
       >
         <div className="flex flex-col gap-y-7">
           <div className="flex flex-col gap-y-3 h-[calc(100vh-190px)] overflow-y-auto">
-            {["", "", ""].map((item) => (
-              <button className="py-5 px-4 flex flex-row gap-y-1 items-start justify-between border border-solid rounded border-lightGrey">
+            {technicians.map((item: any) => (
+              <button
+                className="py-5 px-4 flex flex-row gap-y-1 items-start justify-between border border-solid rounded border-lightGrey"
+                onClick={() => assignTechnicianToRequest(item._id)}
+              >
                 <IonText className="text-sm text-lightGrey">
-                  Plumber
+                  {item?.role || ""}
                 </IonText>
                 <MessageIcon />
               </button>

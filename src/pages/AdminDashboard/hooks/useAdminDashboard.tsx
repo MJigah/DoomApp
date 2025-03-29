@@ -4,6 +4,7 @@ import usePush from "../../../utils/usePush";
 import { RoomRoutes } from "../../../layout/RoomLayout/route";
 import { MaintenanceRoutes } from "../../../layout/MaintenanceLayout/route";
 import { BillingRoutes } from "../../../layout/BillingLayout/route";
+import { IonButton } from "@ionic/react";
 
 const useAdminDashboard = () => {
   const { user } = useUser();
@@ -93,15 +94,29 @@ const useAdminDashboard = () => {
     case "Staff":
       headerClass = "text-center";
       containerSpacing = "gap-y-[20px]";
+
       break;
     default:
     // Code to execute if no cases match
   }
+
+  const staffFooterComponent = (
+    <div className="flex-1 flex px-3 py-3">
+      <IonButton
+        className="default-bottom-btn flex-1"
+        onClick={navigateToRequests}
+      >
+        Maintain Requests
+      </IonButton>
+    </div>
+  );
+
   return {
     userRole,
     headerClass,
     navLinks,
     containerSpacing,
+    staffFooterComponent,
   };
 };
 

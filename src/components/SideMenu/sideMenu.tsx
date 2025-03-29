@@ -2,16 +2,17 @@ import { IonContent, IonHeader, IonMenu, IonMenuToggle } from "@ionic/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import CloseIcon from "../../assets/svg/Close.svg?react";
-import "./sideMenu.css";
 import usePush from "../../utils/usePush";
 import { AuthRoutes } from "../../layout/AuthLayout/routes";
 import { DashboardRoutes } from "../../layout/DashboardLayout/routes";
 import { RoomRoutes } from "../../layout/RoomLayout/route";
 import { MaintenanceRoutes } from "../../layout/MaintenanceLayout/route";
 import { BillingRoutes } from "../../layout/BillingLayout/route";
+import "./sideMenu.css";
 
 const SideMenu = () => {
   const { push } = usePush();
+  
   const handleLogout = () => {
     push(AuthRoutes.login);
   };

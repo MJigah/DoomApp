@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import SideMenu from "../SideMenu/sideMenu";
 import { IonContent, IonFooter, IonHeader, IonMenuToggle } from "@ionic/react";
 import MenuOpen from "../../assets/svg/menu.svg?react";

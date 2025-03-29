@@ -1,6 +1,6 @@
 import React from "react";
 import PageWrapper from "../../components/PageWrapper/pageWrapper";
-import Success from "../../assets/svg/requestSuccess.svg?react";
+import Success from "../../assets/svg/RequestSuccess.svg?react";
 import BackIcon from "../../assets/svg/BackArrow.svg?react";
 import { IonHeader, IonText } from "@ionic/react";
 import SideMenu from "../../components/SideMenu/sideMenu";

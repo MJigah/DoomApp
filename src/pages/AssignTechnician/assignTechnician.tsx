@@ -5,8 +5,17 @@ import Back from "../../assets/svg/BackArrow.svg?react";
 import SearchIcon from "../../assets/svg/Search.svg";
 import PageMenu from "../../components/PageMenu/pageMenu";
 import "./assignTechnician.css";
+import useAssignTechnician from "./hooks/useAssignTechnician";
 
 const AssignTechnician = () => {
+  const { request, navigateToAssignTechnician } = useAssignTechnician();
+
+  const footerComponent = (
+    <IonButton className="w-full" onClick={navigateToAssignTechnician}>
+      Assign Technician
+    </IonButton>
+  );
+
   return (
     <>
       <PageMenu
@@ -19,19 +28,21 @@ const AssignTechnician = () => {
             </IonText>
           </div>
         }
+        footerComponent={footerComponent}
       >
         <div className="flex flex-col gap-y-7">
           <div className="flex flex-col gap-y-3 h-[calc(100vh-190px)] overflow-y-auto">
             <button className="py-[10px] px-4 flex flex-col gap-y-1 items-start border border-solid rounded border-lightGrey">
               <IonText className="text-sm text-lightGrey">
-                Queen Amina F4
+                {`${request?.room?.block?.name || ""} ${
+                  request?.room?.line || ""
+                }${request?.room?.roomId || ""}`}
               </IonText>
               <IonText className="text-sm text-lightGrey">
-                Kitchen Light Bulb developed fault...
+                {request?.fault || ""}
               </IonText>
             </button>
           </div>
-          <IonButton className="w-full">Assign Technician</IonButton>
         </div>
       </PageMenu>
     </>

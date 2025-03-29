@@ -878,6 +878,10 @@ video {
   row-gap: 0.75rem;
 }
 
+.gap-y-4 {
+  row-gap: 1rem;
+}
+
 .gap-y-5 {
   row-gap: 1.25rem;
 }
@@ -916,10 +920,6 @@ video {
 
 .gap-y-\[80px\] {
   row-gap: 80px;
-}
-
-.gap-y-4 {
-  row-gap: 1rem;
 }
 
 .overflow-y-auto {
@@ -972,6 +972,11 @@ video {
 .border-textGreen {
   --tw-border-opacity: 1;
   border-color: rgb(40 167 69 / var(--tw-border-opacity, 1));
+}
+
+.border-textRed {
+  --tw-border-opacity: 1;
+  border-color: rgb(220 53 69 / var(--tw-border-opacity, 1));
 }
 
 .bg-btnPrimary {
@@ -1101,12 +1106,12 @@ video {
   padding-top: 2.5rem;
 }
 
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-left {

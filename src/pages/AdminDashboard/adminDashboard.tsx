@@ -17,13 +17,23 @@ import SideMenu from "../../components/SideMenu/sideMenu";
 import useAdminDashboard from "./hooks/useAdminDashboard";
 
 const AdminDashboard = () => {
-  const { userRole, headerClass, navLinks, containerSpacing } =
-    useAdminDashboard();
+  const {
+    userRole,
+    headerClass,
+    navLinks,
+    containerSpacing,
+    staffFooterComponent,
+  } = useAdminDashboard();
 
   return (
     <>
       <SideMenu />
-      <PageWrapper className="py-14" id="main-content">
+      <PageWrapper
+        className="py-14"
+        id="main-content"
+        footerComponent={userRole === "Staff" && staffFooterComponent}
+        footerClassName="w-full"
+      >
         <div className={`flex flex-col ${containerSpacing}`}>
           <div className="flex flex-col gap-y-9">
             <IonMenuToggle>
@@ -37,9 +47,11 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="flex flex-col gap-y-5">
-            <IonText className="mt-4 text-lg font-semibold">
-              What do you want to do?
-            </IonText>
+            {userRole !== "Staff" && (
+              <IonText className="mt-4 text-lg font-semibold">
+                What do you want to do?
+              </IonText>
+            )}
             {navLinks}
           </div>
         </div>
